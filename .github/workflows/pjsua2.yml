@@ -1,15 +1,16 @@
 name: pjsip for Windows with ffmpeg and openssl
 on:
-  push:
-    branches:
-      - 'main, develop'
+  push: 
+    branches: [ main, develop ]
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
   default-x86:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: get swig
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/swigwin-4.1.1.zip"  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -24,8 +25,7 @@ jobs:
         type nul > pjsip/pjlib/include/pj/config_site.h
       shell: cmd
     - name: MSBuild
-      run: |
-        cd pjsip
+      run: | 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         msbuild pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Debug /p:Platform=win32
       shell: cmd
@@ -57,7 +57,9 @@ jobs:
   with-ssl-x86:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: get openssl
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/openssl-1.1.1s-win.zip" -OutFile ".\openssl.zip"
       shell: powershell
@@ -119,7 +121,9 @@ jobs:
   with-ffmpeg:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: get ffmpeg
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
       shell: powershell
@@ -180,7 +184,9 @@ jobs:
   with-ffmpeg-ssl-x86:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: get ffmpeg
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
       shell: powershell
