@@ -49,7 +49,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - name: build java swig
       run: |
@@ -59,7 +59,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         cd pjsip/pjsip-apps/build
-        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -131,7 +131,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - name: build java swig
       run: |
@@ -141,7 +141,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         cd pjsip/pjsip-apps/build
-        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -233,7 +233,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - name: build java swig
       run: |
@@ -243,7 +243,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         cd pjsip/pjsip-apps/build
-        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -352,7 +352,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - name: build java swig
       run: |
@@ -362,7 +362,7 @@ jobs:
         type pjsip/pjlib/include/pj/config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         cd pjsip/pjsip-apps/build
-        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_java_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
