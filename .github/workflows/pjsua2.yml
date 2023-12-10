@@ -32,14 +32,13 @@ jobs:
       shell: powershell
     - name: config site
       run:
-        echo "" >  pjsip/pjlib/include/pj/config_site.h
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#include <pj/config_site_sample.h>" 
-        type pjsip/pjlib/include/pj/config_site.h
+        echo "#define PJ_DLL 1" >  pjsip\pjlib\include\pj\config_site.h
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORTING 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJSUA_DLL_EXPORTS 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#include <pj/config_site_sample.h>" 
+        type pjsip\pjlib\include\pj\config_site.h
       shell: powershell
     - name: MSBuild
       run: | 
@@ -50,8 +49,8 @@ jobs:
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip/pjlib/include/pj/config_site.h
-        type pjsip/pjlib/include/pj/config_site.h
+        dir pjsip\pjlib\include\pj\config_site.h
+        type pjsip\pjlib\include\pj\config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
@@ -103,14 +102,14 @@ jobs:
       shell: cmd
     - name: config site
       run: |
-        echo "" >  pjsip/pjlib/include/pj/config_site.h
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
-        Add-Content config_site.h "#define PJ_HAS_SSL_SOCK 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#include <pj/config_site_sample.h>"  
+        echo "" >  pjsip\pjlib\include\pj\config_site.h
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_DLL 1" 
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORTING 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJSUA_DLL_EXPORTS 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_HAS_SSL_SOCK 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#include <pj/config_site_sample.h>"  
       shell: powershell
     - name: check VsDevCmd.bat
       run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
@@ -129,8 +128,8 @@ jobs:
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip/pjlib/include/pj/config_site.h
-        type pjsip/pjlib/include/pj/config_site.h
+        dir pjsip\pjlib\include\pj\config_site.h
+        type pjsip\pjlib\include\pj\config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
@@ -197,18 +196,18 @@ jobs:
       shell: cmd
     - name: config site
       run: |
-        echo "" >  pjsip/pjlib/include/pj/config_site.h
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1"  
-        Add-Content config_site.h "#define PJMEDIA_HAS_VIDEO 1"
-        Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG 1"
-        Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG_VID_CODEC 1"
-        Add-Content config_site.h "#define PJMEDIA_VIDEO_DEV_HAS_FFMPEG 1"
-        Add-Content config_site.h "#define PJMEDIA_VIDEO_DEV_HAS_SDL 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#include <pj/config_site_sample.h>" 
+        echo "" >  pjsip\pjlib\include\pj\config_site.h
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_DLL 1"  
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_VIDEO 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_FFMPEG 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_FFMPEG_VID_CODEC 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_VIDEO_DEV_HAS_FFMPEG 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_VIDEO_DEV_HAS_SDL 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORTING 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJSUA_DLL_EXPORTS 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "#include <pj/config_site_sample.h>" 
       shell: powershell
     - name: check VsDevCmd.bat
       run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
@@ -227,8 +226,8 @@ jobs:
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip/pjlib/include/pj/config_site.h
-        type pjsip/pjlib/include/pj/config_site.h
+        dir pjsip\pjlib\include\pj\config_site.h
+        type pjsip\pjlib\include\pj\config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
@@ -310,19 +309,19 @@ jobs:
       shell: cmd
     - name: config site
       run: |
-        echo "" >  pjsip/pjlib/include/pj/config_site.h
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
-        Add-Content config_site.h "#define PJMEDIA_HAS_VIDEO 1"
-        Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG 1"
-        Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG_VID_CODEC 1"
-        Add-Content config_site.h "#define PJMEDIA_VIDEO_DEV_HAS_FFMPEG 1"
-        Add-Content config_site.h "#define PJMEDIA_VIDEO_DEV_HAS_SDL 1"
-        Add-Content config_site.h "#define PJ_HAS_SSL_SOCK 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
-        Add-Content pjsip/pjlib/include/pj/config_site.h "#include <pj/config_site_sample.h>" 
+        echo "" >  pjsip\pjlib\include\pj\config_site.h
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_DLL 1" 
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_VIDEO 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_FFMPEG 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_HAS_FFMPEG_VID_CODEC 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_VIDEO_DEV_HAS_FFMPEG 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJMEDIA_VIDEO_DEV_HAS_SDL 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_HAS_SSL_SOCK 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORTING 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJSUA_DLL_EXPORTS 1"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
+        Add-Content pjsip\pjlib\include\pj\config_site.h "`n#include <pj/config_site_sample.h>" 
       shell: powershell
     - name: check VsDevCmd.bat
       run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
@@ -342,8 +341,8 @@ jobs:
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip/pjlib/include/pj/config_site.h
-        type pjsip/pjlib/include/pj/config_site.h
+        dir pjsip\pjlib\include\pj\config_site.h
+        type pjsip\pjlib\include\pj\config_site.h
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         cd pjsip/pjsip-apps/build
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
