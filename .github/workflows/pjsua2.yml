@@ -39,6 +39,7 @@ jobs:
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORT_SPECIFIER __declspec(dllexport)"
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_IMPORT_SPECIFIER __declspec(dllimport)"
         Add-Content pjsip/pjlib/include/pj/config_site.h "#include <pj/config_site_sample.h>" 
+        type pjsip/pjlib/include/pj/config_site.h
       shell: powershell
     - name: MSBuild
       run: | 
@@ -101,7 +102,7 @@ jobs:
         dir %OPENSSL_DIR%\lib
       shell: cmd
     - name: config site
-      run:
+      run: |
         echo "" >  pjsip/pjlib/include/pj/config_site.h
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
