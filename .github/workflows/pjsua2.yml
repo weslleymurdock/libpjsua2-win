@@ -32,7 +32,7 @@ jobs:
       shell: powershell
     - name: config site
       run:
-        echo "" >  pjsip/pjlib/include/pj/config_site.h;
+        echo "" >  pjsip/pjlib/include/pj/config_site.h
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
@@ -102,7 +102,7 @@ jobs:
       shell: cmd
     - name: config site
       run:
-        echo "" >  pjsip/pjlib/include/pj/config_site.h;
+        echo "" >  pjsip/pjlib/include/pj/config_site.h
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_EXPORTING 1"
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJSUA_DLL_EXPORTS 1"
@@ -196,7 +196,7 @@ jobs:
       shell: cmd
     - name: config site
       run: |
-        echo "" >  pjsip/pjlib/include/pj/config_site.h;
+        echo "" >  pjsip/pjlib/include/pj/config_site.h
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1"  
         Add-Content config_site.h "#define PJMEDIA_HAS_VIDEO 1"
         Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG 1"
@@ -309,7 +309,7 @@ jobs:
       shell: cmd
     - name: config site
       run: |
-        echo "" >  pjsip/pjlib/include/pj/config_site.h;
+        echo "" >  pjsip/pjlib/include/pj/config_site.h
         Add-Content pjsip/pjlib/include/pj/config_site.h "#define PJ_DLL 1" 
         Add-Content config_site.h "#define PJMEDIA_HAS_VIDEO 1"
         Add-Content config_site.h "#define PJMEDIA_HAS_FFMPEG 1"
