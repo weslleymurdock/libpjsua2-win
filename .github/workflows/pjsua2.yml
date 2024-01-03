@@ -95,10 +95,7 @@ jobs:
       shell: cmd
     - name: config site
       run:  cp ssl-x86\config_site.h pjsip\pjlib\include\pj\
-      shell: powershell
-    - name: check VsDevCmd.bat
-      run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
-      shell: cmd
+      shell: powershell 
     - name: MSBuild
       working-directory: .
       run: |
@@ -181,10 +178,7 @@ jobs:
       shell: cmd
     - name: config site
       run: cp ffmpeg\config_site.h pjsip\pjlib\include\pj\
-      shell: powershell
-    - name: check VsDevCmd.bat
-      run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
-      shell: cmd
+      shell: powershell 
     - name: MSBuild
       working-directory: .
       run: |
@@ -281,10 +275,7 @@ jobs:
       shell: cmd
     - name: config site
       run: cp ffmpeg-ssl\config_site.h pjsip\pjlib\include\pj\
-      shell: powershell
-    - name: check VsDevCmd.bat
-      run: dir "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
-      shell: cmd
+      shell: powershell 
     - name: MSBuild
       working-directory: .
       run: |
