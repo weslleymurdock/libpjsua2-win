@@ -180,7 +180,7 @@ jobs:
     - name: check sdl folder
       run: |
         set /P SDL_DIR=<sdl_dir.txt
-        dir "%SDL_DIR%\include\SDL"
+        dir "%SDL_DIR%\include"
         dir "%SDL_DIR%\lib\x86"
       shell: cmd
     - name: config site
@@ -267,7 +267,7 @@ jobs:
     - name: check sdl folder
       run: |
         set /P SDL_DIR=<sdl_dir.txt
-        dir "%SDL_DIR%\include\SDL"
+        dir "%SDL_DIR%\include"
         dir "%SDL_DIR%\lib\x86"
       shell: cmd
     - name: get openssl
