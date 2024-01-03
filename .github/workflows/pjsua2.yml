@@ -41,9 +41,7 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip\pjlib\include\pj\config_site.h
-        type pjsip\pjlib\include\pj\config_site.h
+        set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
@@ -114,9 +112,7 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip\pjlib\include\pj\config_site.h
-        type pjsip\pjlib\include\pj\config_site.h
+        set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
@@ -202,9 +198,7 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip\pjlib\include\pj\config_site.h
-        type pjsip\pjlib\include\pj\config_site.h
+        set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj        call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
@@ -305,9 +299,7 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH%
-        dir pjsip\pjlib\include\pj\config_site.h
-        type pjsip\pjlib\include\pj\config_site.h
+        set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj        call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
