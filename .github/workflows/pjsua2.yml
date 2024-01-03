@@ -43,7 +43,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
+        
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
@@ -111,7 +111,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
+        
         (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
@@ -185,17 +185,31 @@ jobs:
         set /P FFMPEG_DIR=<ffmpeg_dir.txt        
         set /P LIBSDL_DIR=<sdl_dir.txt
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
-        set INCLUDE=%INCLUDE%;%LIBFFMPEG_DIR%\include;%SDL_DIR%\include
+        set INCLUDE=%INCLUDE%;%FFMPEG_DIR%\include;%SDL_DIR%\include
         set LIB=%LIB%;%FFMPEG_DIR%\lib;%SDL_DIR%\lib\x86
         msbuild pjsip/pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
+    - name: replace \#1
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
+    - name: replace \#2
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="libpjproject.vcxproj">
+        oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj        call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
@@ -283,7 +297,7 @@ jobs:
         set /P LIBSDL_DIR=<sdl_dir.txt
         set /P OPENSSL_DIR=<openssl_dir.txt
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
-        set INCLUDE=%INCLUDE%;%LIBFFMPEG_DIR%\include;%SDL_DIR%\include;%OPENSSL_DIR%\include
+        set INCLUDE=%INCLUDE%;%FFMPEG_DIR%\include;%SDL_DIR%\include;%OPENSSL_DIR%\include
         set LIB=%LIB%;%FFMPEG_DIR%\lib;%SDL_DIR%\lib\x86;%LIB%;%OPENSSL_DIR%\lib
         msbuild pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
@@ -292,8 +306,6 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"libpjproject.vcxproj\">","<ProjectReference Include=\"libpjproject.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj
-        (Get-Content swig_csharp_pjsua2.vcxproj).Replace("<ProjectReference Include=\"..\..\pjsip\build\pjsua2_lib.vcxproj\">","<ProjectReference Include=\".\..\pjsip\build\pjsua2_lib.vcxproj\" SetConfiguration=\"Release-Dynamic\" >") | Set-Content swig_csharp_pjsua2.vcxproj        call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
