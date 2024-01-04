@@ -44,6 +44,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
         oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: replace \#2
@@ -52,7 +53,8 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="libpjproject.vcxproj">
         oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
-        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        newString: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic">
         showFileContent: true
     - name: build csharp swig
       run: |
@@ -127,6 +129,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
         oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: replace \#2
@@ -135,6 +138,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="libpjproject.vcxproj">
         oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newString: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic">
         newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: build csharp swig
@@ -226,6 +230,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
         oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic">
         newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: replace \#2
@@ -234,6 +239,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="libpjproject.vcxproj">
         oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newString: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic">
         newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: build csharp swig
@@ -338,6 +344,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
         oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic">
         newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: replace \#2
@@ -346,6 +353,7 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: <ProjectReference Include="libpjproject.vcxproj">
         oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newString: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
         newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
         showFileContent: true
     - name: build csharp swig
