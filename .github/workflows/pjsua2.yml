@@ -38,6 +38,22 @@ jobs:
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         msbuild pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32
       shell: cmd
+    - name: replace \#1
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
+    - name: replace \#2
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="libpjproject.vcxproj">
+        oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
@@ -105,7 +121,22 @@ jobs:
         set LIB=%LIB%;%OPENSSL_DIR%\lib
         msbuild pjsip/pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
-  
+    - name: replace \#1
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
+    - name: replace \#2
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="libpjproject.vcxproj">
+        oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
@@ -301,6 +332,22 @@ jobs:
         set LIB=%LIB%;%FFMPEG_DIR%\lib;%SDL_DIR%\lib\x86;%LIB%;%OPENSSL_DIR%\lib
         msbuild pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
+    - name: replace \#1
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        oldStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj">
+        newStringWin: <ProjectReference Include="..\..\pjsip\build\pjsua2_lib.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
+    - name: replace \#2
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with: 
+        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+        oldString: <ProjectReference Include="libpjproject.vcxproj">
+        oldStringWin: <ProjectReference Include="libpjproject.vcxproj">
+        newStringWin: <ProjectReference Include="libpjproject.vcxproj" SetConfiguration="Release-Dynamic"> 
+        showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
