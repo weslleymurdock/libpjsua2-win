@@ -148,9 +148,6 @@ jobs:
         "--add", "Microsoft.VisualStudio.Component.VC.140", `
         "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
         "--norestart", "--force", "--wait" -Wait -PassThru
-        - name: get swig
-        run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
-        shell: powershell
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
