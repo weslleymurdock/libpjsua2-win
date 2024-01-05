@@ -13,9 +13,6 @@ jobs:
     name: SETUP
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: recursive
     - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
       shell: powershell
       run: | 
@@ -77,8 +74,11 @@ jobs:
 
   default-x86:
     needs: setup-env
-    runs-on: windows-latest
+    runs-on: windows-latest 
     steps: 
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: config site
       run: cp ${{github.workspace}}\x86\config_site.h ${{github.workspace}}\pjsip\pjlib\include\pj\
       shell: powershell
@@ -112,7 +112,10 @@ jobs:
   with-ssl-x86:
     needs: setup-env
     runs-on: windows-latest
-    steps: 
+    steps:  
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: config site
       run:  cp ${{github.workspace}}\ssl-x86\config_site.h ${{github.workspace}}\pjsip\pjlib\include\pj\
       shell: powershell 
@@ -150,29 +153,10 @@ jobs:
   with-ffmpeg:
     needs: setup-env
     runs-on: windows-latest
-    steps:
+    steps: 
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
-      shell: powershell
-      run: |
-        $VS_BTOOLS_EXE="vs_buildtools.exe"
-        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
-        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
-        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
-        "--add", "Microsoft.VisualStudio.Component.VC.140", `
-        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
-        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
-    - name: get swig
-      run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/swigwin-4.1.1.zip"  -OutFile ".\swigwin.zip"
-      shell: powershell
-    - name: expand swig
-      run: |
-        Expand-Archive -LiteralPath .\swigwin.zip -DestinationPath .\swigwin\; pwd
-        cd swigwin\swigwin-4.1.1
-        Add-Content ..\..\swig_path.txt $pwd.Path
-      shell: powershell
     - name: config site
       run: cp ffmpeg\config_site.h pjsip\pjlib\include\pj\
       shell: powershell 
@@ -210,29 +194,11 @@ jobs:
   with-ffmpeg-ssl-x86:
     needs: setup-env
     runs-on: windows-latest
-    steps:
+    steps: 
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
-      shell: powershell
-      run: |
-        $VS_BTOOLS_EXE="vs_buildtools.exe"
-        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
-        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
-        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
-        "--add", "Microsoft.VisualStudio.Component.VC.140", `
-        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
-        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
-    - name: get swig
-      run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/swigwin-4.1.1.zip"  -OutFile ".\swigwin.zip"
-      shell: powershell
-    - name: expand swig
-      run: |
-        Expand-Archive -LiteralPath .\swigwin.zip -DestinationPath .\swigwin\; pwd
-        cd swigwin\swigwin-4.1.1
-        Add-Content ..\..\swig_path.txt $pwd.Path
-      shell: powershell
+     
     - name: get ffmpeg
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
       shell: powershell
@@ -262,22 +228,7 @@ jobs:
         set /P SDL_DIR=<sdl_dir.txt
         dir "%SDL_DIR%\include"
         dir "%SDL_DIR%\lib\x86"
-      shell: cmd
-    - name: get openssl
-      run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/openssl-1.1.1s-win.zip" -OutFile ".\openssl.zip"
-      shell: powershell
-    - name: expand openssl
-      run: |
-        Expand-Archive -LiteralPath .\openssl.zip -DestinationPath .;
-        cd openssl_build
-        Add-Content ..\openssl_dir.txt $pwd.Path
-      shell: powershell
-    - name: check openssl folder
-      run: |
-        set /P OPENSSL_DIR=<openssl_dir.txt
-        dir %OPENSSL_DIR%\include
-        dir %OPENSSL_DIR%\lib
-      shell: cmd
+      shell: cmd 
     - name: config site
       run: cp ffmpeg-ssl\config_site.h pjsip\pjlib\include\pj\
       shell: powershell 
