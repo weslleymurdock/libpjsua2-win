@@ -9,44 +9,7 @@ env:
   swig-url: 'https://github.com/pjsip/third_party_libs/raw/main/swigwin-4.1.1.zip'
   
 jobs:
-  setup-env:
-    name: SETUP
-    runs-on: windows-latest
-    steps:
-   
-    - name: check openssl folder
-      run: |
-        set /P OPENSSL_DIR=<openssl_dir.txt
-        dir %OPENSSL_DIR%\include
-        dir %OPENSSL_DIR%\lib
-      shell: cmd
-    - name: get ffmpeg
-      run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
-      shell: powershell
-    - name: expand ffmpeg
-      run: |
-        Expand-Archive -LiteralPath .\ffmpeg.zip -DestinationPath .; pwd
-        cd ffmpeg_build
-        Add-Content ..\ffmpeg_dir.txt $pwd.Path
-      shell: powershell
-    - name: check ffmpeg folder
-      run: |
-        set /P FFMPEG_DIR=<ffmpeg_dir.txt
-        dir "%FFMPEG_DIR%\include"
-        dir "%FFMPEG_DIR%\lib"
-      shell: cmd
-    - name: get sdl
-      run: Invoke-WebRequest -Uri "https://github.com/libsdl-org/SDL/releases/download/release-2.26.2/SDL2-devel-2.26.2-VC.zip" -Outfile ".\sdl.zip"
-      shell: powershell
-    - name: expand sdl
-      run: |
-        Expand-Archive -LiteralPath .\sdl.zip -DestinationPath .\; pwd
-        cd SDL2-2.26.2
-        Add-Content ..\sdl_dir.txt $pwd.Path
-      shell: powershell 
-
   default-x86:
-    needs: setup-env
     runs-on: windows-latest 
     steps: 
     - uses: actions/checkout@v4
@@ -102,7 +65,6 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp/output/
 
   with-ssl-x86:
-    needs: setup-env
     runs-on: windows-latest
     steps:  
     - uses: actions/checkout@v4
@@ -170,8 +132,7 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp/output/
         
-  with-ffmpeg:
-    needs: setup-env
+  with-ffmpeg: 
     runs-on: windows-latest
     steps: 
     - uses: actions/checkout@v4
@@ -264,8 +225,7 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp/output/
     
-  with-ffmpeg-ssl-x86:
-    needs: setup-env
+  with-ffmpeg-ssl-x86: 
     runs-on: windows-latest
     steps: 
     - uses: actions/checkout@v4
