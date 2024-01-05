@@ -13,16 +13,6 @@ jobs:
     name: SETUP
     runs-on: windows-latest
     steps:
-    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
-      shell: powershell
-      run: | 
-        $VS_BTOOLS_EXE="vs_buildtools.exe"
-        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
-        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
-        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
-        "--add", "Microsoft.VisualStudio.Component.VC.140", `
-        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
-        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -79,6 +69,16 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: | 
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--norestart", "--force", "--wait" -Wait -PassThru
     - name: config site
       run: cp ${{github.workspace}}\x86\config_site.h ${{github.workspace}}\pjsip\pjlib\include\pj\
       shell: powershell
@@ -116,6 +116,16 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: | 
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--norestart", "--force", "--wait" -Wait -PassThru
     - name: config site
       run:  cp ${{github.workspace}}\ssl-x86\config_site.h ${{github.workspace}}\pjsip\pjlib\include\pj\
       shell: powershell 
@@ -157,6 +167,16 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: | 
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--norestart", "--force", "--wait" -Wait -PassThru
     - name: config site
       run: cp ffmpeg\config_site.h pjsip\pjlib\include\pj\
       shell: powershell 
@@ -198,7 +218,16 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-     
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: | 
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--norestart", "--force", "--wait" -Wait -PassThru 
     - name: get ffmpeg
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
       shell: powershell
