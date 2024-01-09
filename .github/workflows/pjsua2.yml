@@ -9,26 +9,22 @@ env:
   swig-url: 'https://github.com/pjsip/third_party_libs/raw/main/swigwin-4.1.1.zip'
   
 jobs:
-  default:
-    strategy:
-      matrix:
-        arch:
-          - x86
-          - x86_arm
-          - x64   
-          - amd64_arm64       
+  default:     
     runs-on: windows-latest 
     steps: 
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Enable Developer Command Prompt
-      uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.arch }} 
-        toolset: 14.0 
-        sdk:  10.0.10586.0
-        uwp: true
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: |
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -68,27 +64,23 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp/
 
-  with-ssl: 
-    strategy:
-      matrix:
-        arch:
-          - x86
-          - x86_arm
-          - x64   
-          - amd64_arm64       
+  with-ssl:     
     runs-on: windows-latest 
     
     steps: 
     - uses: actions/checkout@v4
       with:
           submodules: recursive
-    - name: Enable Developer Command Prompt
-      uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.arch }}
-        sdk:  10.0.10586.0
-        toolset: 14.0 
-        uwp: true
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: |
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -141,27 +133,23 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp
         
-  with-ffmpeg: 
-    strategy:
-      matrix:
-        arch:
-          - x86
-          - x86_arm
-          - x64   
-          - amd64_arm64       
+  with-ffmpeg:      
     runs-on: windows-latest 
     
     steps: 
     - uses: actions/checkout@v4
       with:
-          submodules: recursive
-    - name: Enable Developer Command Prompt
-      uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.arch }}
-        sdk:  10.0.10586.0
-        toolset: 14.0 
-        uwp: true
+        submodules: recursive
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: |
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+          "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -236,27 +224,23 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp
     
-  with-ffmpeg-ssl: 
-    strategy:
-      matrix:
-        arch:
-          - x86
-          - x86_arm
-          - x64   
-          - amd64_arm64       
+  with-ffmpeg-ssl:       
     runs-on: windows-latest 
     
     steps: 
     - uses: actions/checkout@v4
       with:
           submodules: recursive
-    - name: Enable Developer Command Prompt
-      uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.arch }}
-        sdk:  10.0.10586.0
-        toolset: 14.0 
-        uwp: true
+    - name: Install MSVC 2015 (v140) and Windows 8.1 SDK
+      shell: powershell
+      run: |
+        $VS_BTOOLS_EXE="vs_buildtools.exe"
+        $VS_BTOOLS_URI="https://aka.ms/vs/15/release/vs_buildtools.exe"
+        Invoke-WebRequest -Uri $VS_BTOOLS_URI -OutFile $VS_BTOOLS_EXE
+        Start-Process -FilePath ./vs_BuildTools.exe -ArgumentList `
+        "--add", "Microsoft.VisualStudio.Component.VC.140", `
+        "--add", "Microsoft.VisualStudio.Component.Windows81SDK", `
+        "--quiet", "--norestart", "--force", "--wait" -Wait -PassThru
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
