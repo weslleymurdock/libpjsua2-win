@@ -42,22 +42,22 @@ jobs:
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
         msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32
       shell: cmd
-    - name: replace  
-      uses: Nambers/ReplaceStringInFile@v1.3
-      with: 
-        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
-        oldString: ProjectReference Include
-        oldStringWin: ProjectReference Include
-        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        showFileContent: true
+    # - name: replace  
+    #   uses: Nambers/ReplaceStringInFile@v1.3
+    #   with: 
+    #     path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+    #     oldString: ProjectReference Include
+    #     oldStringWin: ProjectReference Include
+    #     newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=false /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=true /p:PlatformToolset=v140 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -111,22 +111,22 @@ jobs:
         set LIB=%LIB%;%OPENSSL_DIR%\lib
         msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
-    - name: replace  
-      uses: Nambers/ReplaceStringInFile@v1.3
-      with: 
-        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
-        oldString: ProjectReference Include
-        oldStringWin: ProjectReference Include
-        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        showFileContent: true
+    # - name: replace  
+    #   uses: Nambers/ReplaceStringInFile@v1.3
+    #   with: 
+    #     path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+    #     oldString: ProjectReference Include
+    #     oldStringWin: ProjectReference Include
+    #     newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=false /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=true /p:PlatformToolset=v140 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -203,21 +203,21 @@ jobs:
         set LIB=%LIB%;%FFMPEG_DIR%\lib;%SDL_DIR%\lib\x86
         msbuild pjsip/pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
-    - name: replace  
-      uses: Nambers/ReplaceStringInFile@v1.3
-      with: 
-        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
-        oldString: ProjectReference Include
-        oldStringWin: ProjectReference Include
-        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        showFileContent: true
+    # - name: replace  
+    #   uses: Nambers/ReplaceStringInFile@v1.3
+    #   with: 
+    #     path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+    #     oldString: ProjectReference Include
+    #     oldStringWin: ProjectReference Include
+    #     newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     showFileContent: true
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=false /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=true /p:PlatformToolset=v140 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -303,22 +303,22 @@ jobs:
         set LIB=%LIB%;%FFMPEG_DIR%\lib;%SDL_DIR%\lib\x86;%LIB%;%OPENSSL_DIR%\lib
         msbuild pjsip\pjproject-vs14.sln /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
-    - name: replace 
-      uses: Nambers/ReplaceStringInFile@v1.3
-      with: 
-        path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
-        oldString: ProjectReference Include
-        oldStringWin: ProjectReference Include
-        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
-        showFileContent: true 
+    # - name: replace 
+    #   uses: Nambers/ReplaceStringInFile@v1.3
+    #   with: 
+    #     path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
+    #     oldString: ProjectReference Include
+    #     oldStringWin: ProjectReference Include
+    #     newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
+    #     showFileContent: true 
     - name: build csharp swig
       working-directory: .
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=false /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:BuildProjectReferences=true /p:PlatformToolset=v140 /p:Configuration=Release /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
