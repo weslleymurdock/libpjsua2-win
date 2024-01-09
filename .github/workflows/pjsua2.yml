@@ -28,7 +28,7 @@ jobs:
         arch: ${{ matrix.arch }}
         sdk: 8.1
         toolset: 14.0
-        uwp: true
+        
 
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
@@ -69,7 +69,7 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp/
 
-  with-ssl-x86: 
+  with-ssl: 
     strategy:
       matrix:
         arch:
@@ -89,7 +89,7 @@ jobs:
         arch: ${{ matrix.arch }}
         sdk: 8.1
         toolset: 14.0
-        uwp: true 
+         
 
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
@@ -163,7 +163,7 @@ jobs:
         arch: ${{ matrix.arch }}
         sdk: 8.1
         toolset: 14.0
-        uwp: true
+        
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -238,7 +238,7 @@ jobs:
         name: pjsua2.dll
         path: ${{ github.workspace }}/pjsip/pjsip-apps/src/swig/csharp
     
-  with-ffmpeg-ssl-x86: 
+  with-ffmpeg-ssl: 
     strategy:
       matrix:
         arch:
@@ -258,7 +258,7 @@ jobs:
         arch: ${{ matrix.arch }}
         sdk: 8.1
         toolset: 14.0
-        uwp: true
+        
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
