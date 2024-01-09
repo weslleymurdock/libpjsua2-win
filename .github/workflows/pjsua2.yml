@@ -313,6 +313,7 @@ jobs:
         newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
         showFileContent: true 
     - name: build csharp swig
+      working-directory: .
       run: |
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
