@@ -23,11 +23,12 @@ jobs:
       with:
         submodules: recursive
     - name: Enable Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1.13.0
+      uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }} 
         toolset: 14.0 
         sdk: 8.1
+        uwp: true
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -82,13 +83,12 @@ jobs:
       with:
           submodules: recursive
     - name: Enable Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1.13.0
+      uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
         sdk: 8.1
-        toolset: 14.0
-         
-
+        toolset: 14.0 
+        uwp: true
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -156,12 +156,12 @@ jobs:
       with:
           submodules: recursive
     - name: Enable Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1.13.0
+      uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
         sdk: 8.1
-        toolset: 14.0
-        
+        toolset: 14.0 
+        uwp: true
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -251,12 +251,12 @@ jobs:
       with:
           submodules: recursive
     - name: Enable Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1.13.0
+      uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
         sdk: 8.1
-        toolset: 14.0
-        
+        toolset: 14.0 
+        uwp: true
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
