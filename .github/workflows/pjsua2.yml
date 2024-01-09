@@ -27,6 +27,7 @@ jobs:
       with:
         arch: ${{ matrix.arch }} 
         toolset: 14.0 
+        sdk: 8.1
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
       shell: powershell
@@ -84,7 +85,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1.13.0
       with:
         arch: ${{ matrix.arch }}
-       
+        sdk: 8.1
         toolset: 14.0
          
 
@@ -158,7 +159,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1.13.0
       with:
         arch: ${{ matrix.arch }}
-       
+        sdk: 8.1
         toolset: 14.0
         
     - name: get swig
@@ -253,7 +254,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1.13.0
       with:
         arch: ${{ matrix.arch }}
-       
+        sdk: 8.1
         toolset: 14.0
         
     - name: get swig
