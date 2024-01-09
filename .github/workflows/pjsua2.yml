@@ -27,7 +27,7 @@ jobs:
       with:
         arch: ${{ matrix.arch }} 
         toolset: 14.0 
-        sdk: 8.1
+        sdk:  10.0.10586.0
         uwp: true
     - name: get swig
       run: Invoke-WebRequest -Uri ${{ env.swig-url }}  -OutFile ".\swigwin.zip"
@@ -86,7 +86,7 @@ jobs:
       uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
-        sdk: 8.1
+        sdk:  10.0.10586.0
         toolset: 14.0 
         uwp: true
     - name: get swig
@@ -159,7 +159,7 @@ jobs:
       uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
-        sdk: 8.1
+        sdk:  10.0.10586.0
         toolset: 14.0 
         uwp: true
     - name: get swig
@@ -254,7 +254,7 @@ jobs:
       uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.arch }}
-        sdk: 8.1
+        sdk:  10.0.10586.0
         toolset: 14.0 
         uwp: true
     - name: get swig
