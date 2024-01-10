@@ -261,7 +261,7 @@ jobs:
         Expand-Archive -LiteralPath .\openssl.zip -DestinationPath .; pwd
         cd openssl_build
         Add-Content ..\openssl_dir.txt $pwd.Path
-        shell: powershell
+      shell: powershell
     - name: get ffmpeg
       run: Invoke-WebRequest -Uri "https://github.com/pjsip/third_party_libs/raw/main/ffmpeg-5.1.2-win.zip" -Outfile "ffmpeg.zip"
       shell: powershell
