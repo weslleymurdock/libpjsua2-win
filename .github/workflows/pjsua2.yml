@@ -54,10 +54,9 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH% 
-        cd pjsip/pjsip-apps/build 
+        set PATH=%PATH%;%SWIG_PATH%  
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /t:swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -123,10 +122,9 @@ jobs:
     - name: build csharp swig
       run: |
         set /P SWIG_PATH=<swig_path.txt
-        set PATH=%PATH%;%SWIG_PATH% 
-        cd pjsip/pjsip-apps/build 
+        set PATH=%PATH%;%SWIG_PATH%  
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /t:swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -217,7 +215,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /t:swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -318,7 +316,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:UseEnv=true
+        msbuild ${{github.workspace}}\pjsip\pjproject-vs14.sln /t:swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
