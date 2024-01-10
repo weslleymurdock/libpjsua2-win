@@ -48,8 +48,8 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: ProjectReference Include
         oldStringWin: ProjectReference Include
-        newString: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
+        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
         showFileContent: true
     - name: build csharp swig
       run: |
@@ -117,8 +117,8 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: ProjectReference Include
         oldStringWin: ProjectReference Include
-        newString: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
+        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
         showFileContent: true
     - name: build csharp swig
       run: |
@@ -209,8 +209,8 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: ProjectReference Include
         oldStringWin: ProjectReference Include
-        newString: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
+        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
         showFileContent: true
     - name: build csharp swig
       run: |
@@ -309,8 +309,8 @@ jobs:
         path: ${{ github.workspace }}/pjsip/pjsip-apps/build/swig_csharp_pjsua2.vcxproj
         oldString: ProjectReference Include
         oldStringWin: ProjectReference Include
-        newString: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
-        newStringWin: ProjectReference SetConfiguration=\"Release-Dynamic\" Include 
+        newString: ProjectReference Configuration=\"Release-Dynamic\" Include 
+        newStringWin: ProjectReference Configuration=\"Release-Dynamic\" Include 
         showFileContent: true 
     - name: build csharp swig
       working-directory: .
