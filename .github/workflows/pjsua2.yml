@@ -57,7 +57,7 @@ jobs:
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v140 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true /p:OutDir=..\src\swig\csharp\output\ /p:TargetName=pjsua2 /p:TargetExt=.dll
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -129,7 +129,7 @@ jobs:
         set LIB=%LIB%;%OPENSSL_DIR%\lib
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v140 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true /p:OutDir=..\src\swig\csharp\output\ /p:TargetName=pjsua2 /p:TargetExt=.dll
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -220,7 +220,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v140 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true /p:OutDir=..\src\swig\csharp\output\ /p:TargetName=pjsua2 /p:TargetExt=.dll
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -321,7 +321,7 @@ jobs:
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v140 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true /p:OutDir=..\src\swig\csharp\output\ /p:TargetName=pjsua2 /p:TargetExt=.dll
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
