@@ -57,7 +57,7 @@ jobs:
         set PATH=%PATH%;%SWIG_PATH% 
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
-        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release-Dynamic /p:Platform=win32 /p:UseEnv=true
+        msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
       shell: cmd
     - uses: actions/upload-artifact@v3
       with:
@@ -95,7 +95,7 @@ jobs:
       shell: powershell
     - name: expand openssl
       run: |
-        Expand-Archive -LiteralPath .\openssl.zip -DestinationPath .;
+        Expand-Archive -LiteralPath .\openssl.zip -DestinationPath .; pwd
         cd openssl_build
         Add-Content ..\openssl_dir.txt $pwd.Path
       shell: powershell
@@ -122,8 +122,11 @@ jobs:
         showFileContent: true
     - name: build csharp swig
       run: |
+        set /P OPENSSL_DIR=<openssl_dir.txt
         set /P SWIG_PATH=<swig_path.txt
         set PATH=%PATH%;%SWIG_PATH%  
+        set INCLUDE=%INCLUDE%;%OPENSSL_DIR%\include
+        set LIB=%LIB%;%OPENSSL_DIR%\lib
         cd pjsip/pjsip-apps/build 
         call "%PROGRAMFILES%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" 
         msbuild swig_csharp_pjsua2.vcxproj /p:PlatformToolset=v143 /p:Configuration=Release /p:Platform=win32 /p:UseEnv=true
@@ -179,9 +182,9 @@ jobs:
       shell: powershell
     - name: expand sdl
       run: |
-        Expand-Archive -LiteralPath .\sdl.zip -DestinationPath .\sdl_build\; pwd
-        cd sdl_build\SDL2-2.26.2
-        Add-Content ..\..\sdl_dir.txt $pwd.Path
+        Expand-Archive -LiteralPath .\sdl.zip -DestinationPath .; pwd
+        cd SDL2-2.26.2
+        Add-Content ..\sdl_dir.txt $pwd.Path
       shell: powershell
     - name: check sdl folder
       run: |
